@@ -16,7 +16,12 @@ class Dog:
 
 class JackRussellTerrier(Dog):
     def speak(self, sound="Hał Hał"):
-        return f"{self.name} says {sound}"
+        return super().speak(sound)
+
+
+class GoldenRetriever(Dog):
+    def speak(self, sound="Bark"):
+        return super().speak(sound)
 
 
 class Dachshund(Dog):
