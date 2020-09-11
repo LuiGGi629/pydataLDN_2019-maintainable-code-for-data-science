@@ -13,8 +13,14 @@ class CategoriesExtractor(BaseEstimator, TransformerMixin):
     misc = "misc"
     gen_cats = ["music", "film & video", "publishing", "art", "games"]
     precise_cats = [
-        "rock", "fiction", "webseries", "indie rock", "children's books",
-        "shorts", "documentary", "video games"
+        "rock",
+        "fiction",
+        "webseries",
+        "indie rock",
+        "children's books",
+        "shorts",
+        "documentary",
+        "video games",
     ]
 
     def __init__(self, use_all=False):
@@ -33,14 +39,17 @@ class CategoriesExtractor(BaseEstimator, TransformerMixin):
         return categories
 
     def fit(self, X, y=None):
-        # Your code here
-        # [...]
-        pass
+        return self
 
     def transform(self, X):
-        # Your code here
-        # [...]
-        pass
+        categories = X["category"]
+
+        return pd.DataFrame(
+            {
+                "gen_cat": categories.apply(lambda x: self._get_slug(x)[0]),
+                "precise_cat": categories.apply(lambda x: self._get_slug(x)[1]),
+            }
+        )
 
 
 class GoalAdjustor(BaseEstimator, TransformerMixin):
@@ -78,27 +87,27 @@ class CountryTransformer(BaseEstimator, TransformerMixin):
     too many dummies."""
 
     countries = {
-        'US': 'US',
-        'CA': 'Canada',
-        'GB': 'UK & Ireland',
-        'AU': 'Oceania',
-        'IE': 'UK & Ireland',
-        'SE': 'Europe',
-        'CH': "Europe",
-        'IT': 'Europe',
-        'FR': 'Europe',
-        'NZ': 'Oceania',
-        'DE': 'Europe',
-        'NL': 'Europe',
-        'NO': 'Europe',
-        'MX': 'Other',
-        'ES': 'Europe',
-        'DK': 'Europe',
-        'BE': 'Europe',
-        'AT': 'Europe',
-        'HK': 'Other',
-        'SG': 'Other',
-        'LU': 'Europe'
+        "US": "US",
+        "CA": "Canada",
+        "GB": "UK & Ireland",
+        "AU": "Oceania",
+        "IE": "UK & Ireland",
+        "SE": "Europe",
+        "CH": "Europe",
+        "IT": "Europe",
+        "FR": "Europe",
+        "NZ": "Oceania",
+        "DE": "Europe",
+        "NL": "Europe",
+        "NO": "Europe",
+        "MX": "Other",
+        "ES": "Europe",
+        "DK": "Europe",
+        "BE": "Europe",
+        "AT": "Europe",
+        "HK": "Other",
+        "SG": "Other",
+        "LU": "Europe",
     }
 
     def fit(self, X, y=None):
