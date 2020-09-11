@@ -9,12 +9,14 @@ class Dog:
     def __str__(self):
         return f"{self.name} is {self.age} years old"
 
+    # Change the string returned by .speak()
     def speak(self, sound):
-        return f"{self.name} says {sound}"
+        return f"{self.name} barks: {sound}"
 
 
 class JackRussellTerrier(Dog):
-    pass
+    def speak(self, sound="Hał Hał"):
+        return f"{self.name} says {sound}"
 
 
 class Dachshund(Dog):
