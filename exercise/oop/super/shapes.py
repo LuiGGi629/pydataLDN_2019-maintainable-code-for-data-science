@@ -10,12 +10,7 @@ class Rectangle:
         return 2 * self.length + 2 * self.width
 
 
-class Square:
+# Here we declare that the Square class inherits from the Rectangle class
+class Square(Rectangle):
     def __init__(self, length) -> None:
-        self.length = length
-
-    def area(self):
-        return self.length * self.length
-
-    def perimeter(self):
-        return 4 * self.length
+        super().__init__(length, length)
