@@ -54,4 +54,5 @@ class FactoryWorker(HourlyEmployee):
 
 
 class TemporarySecretary(HourlyEmployee, Secretary):
-    pass
+    def __init__(id, name, hours_worked, hour_rate):
+        super().__init__(id, name, hours_worked, hour_rate)
