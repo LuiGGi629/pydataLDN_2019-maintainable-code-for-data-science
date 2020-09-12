@@ -33,26 +33,9 @@ class CommissionEmployee(SalaryEmployee):
         return fixed + self.comission
 
 
-class Manager(SalaryEmployee):
-    def work(self, hours):
-        print(f"{self.name} screams and yells for {hours} hours.")
+class TemporarySecretary(Secretary, HourlyEmployee):
+    def __init__(self, id, name, hours_worked, hour_rate):
+        HourlyEmployee.__init__(self, id, name, hours_worked, hour_rate)
 
-
-class Secretary(SalaryEmployee):
-    def work(self, hours):
-        print(f"{self.name} expends {hours} hours doing office paperwork.")
-
-
-class SalesPerson(CommissionEmployee):
-    def work(self, hours):
-        print(f"{self.name} expends {hours} hours on the phone.")
-
-
-class FactoryWorker(HourlyEmployee):
-    def work(self, hours):
-        print(f"{self.name} manufactures gadgets for {hours} hours.")
-
-
-class TemporarySecretary(HourlyEmployee, Secretary):
-    def __init__(id, name, hours_worked, hour_rate):
-        super().__init__(id, name, hours_worked, hour_rate)
+    def calculate_payroll(self):
+        return HourlyEmployee.calculate_payroll(self)
