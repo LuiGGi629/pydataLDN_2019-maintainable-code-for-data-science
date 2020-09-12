@@ -1,6 +1,3 @@
-from abc import ABC, abstractmethod
-
-
 class PayrollSystem:
     def calculate_payroll(self, employees):
         print("Calculating Payroll")
@@ -11,14 +8,10 @@ class PayrollSystem:
             print("")
 
 
-class Employee(ABC):
+class Employee:
     def __init__(self, id, name) -> None:
         self.id = id
         self.name = name
-
-    @abstractmethod
-    def calculate_payroll(self):
-        pass
 
 
 class SalaryEmployee(Employee):
