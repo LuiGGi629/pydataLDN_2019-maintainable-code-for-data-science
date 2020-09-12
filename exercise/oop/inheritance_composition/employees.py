@@ -53,5 +53,5 @@ class FactoryWorker(HourlyEmployee):
         print(f"{self.name} manufactures gadgets for {hours} hours.")
 
 
-class TemporarySecretary(Secretary, HourlyEmployee):
+class TemporarySecretary(HourlyEmployee, Secretary):
     pass
